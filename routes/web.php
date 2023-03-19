@@ -17,6 +17,10 @@ Route::get('/', function () {
     return view('auth/login');
 });
 
+Route::get('/addstudent', function () {
+    return view('student/addStudent');
+})->name('student');
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -28,12 +32,39 @@ Route::middleware([
     Route::get('/policy', function () {
         return view('policy');
     })->name('policy');
+
     Route::get('/student', function () {
         return view('student/studentIndex');
     })->name('student');
+    Route::get('/addstudent', function () {
+        return view('student/addStudent');
+    })->name('student');
+
     Route::get('/professeur', function () {
         return view('professeur/professeurIndex');
     })->name('professeur');
 });
 
 
+// Route::get('/addstudent', function () {
+//     return view('student/addStudent');
+// })->name('student');
+
+
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->name('dashboard');
+// Route::get('/policy', function () {
+//     return view('policy');
+// })->name('policy');
+
+// Route::get('/student', function () {
+//     return view('student/studentIndex');
+// })->name('student');
+// Route::get('/addstudent', function () {
+//     return view('student/addStudent');
+// })->name('student');
+
+// Route::get('/professeur', function () {
+//     return view('professeur/professeurIndex');
+// })->name('professeur');
