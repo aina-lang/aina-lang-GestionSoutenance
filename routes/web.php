@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/chart', function () {
+    return view('chart');
+});
+
 Route::get('/', function () {
     return view('auth/login');
 });
