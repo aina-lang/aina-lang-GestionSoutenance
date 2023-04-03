@@ -3,7 +3,9 @@
     <div class="logo mb-10">
         <h1 class="text-bold text-xl text-indigo-500  mb-9 xl:mb-0 xl:mt-2">Ajout d'un etudiant</h1>
     </div>
-    <form action="#" method="POST" class="xl:w-3/5  mx-auto p-4  bg-white shadow-md rounded-md">
+    <form action="{{ route('etudiant.store') }}" method="POST" class="xl:w-3/5  mx-auto p-4  bg-white shadow-md rounded-md">
+        @csrf
+        {{-- @method('POST') --}}
         <div class="grid xl:grid-cols-2 gap-10 justify-center p-4">
             <div class="w-full">
                 <div class="mb-4 w-full">
@@ -19,8 +21,8 @@
                         required>
                 </div>
                 <div class="mb-4">
-                    <label for="prenoms" class="block text-gray-700 font-bold mb-2">Prénoms</label>
-                    <input type="text" id="prenoms" name="prenoms"
+                    <label for="prenom" class="block text-gray-700 font-bold mb-2">Prénoms</label>
+                    <input type="text" id="prenom" name="prenom"
                         class="w-full px-3 py-2 border rounded-md outline-none focus:ring-2 focus:ring-blue-500"
                         required>
                 </div>
@@ -54,7 +56,7 @@
                 </div>
                 <div class="mb-4">
                     <label for="adr_email" class="block text-gray-700 font-bold mb-2">Adresse email</label>
-                    <input type="email" id="adr_email" name="adr_email"
+                    <input type="email" id="adr_email" name="email"
                         class="w-full px-3 py-2 border rounded-md outline-none focus:ring-2 focus:ring-blue-500"
                         required>
                 </div>

@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('professeur', function (Blueprint $table) {
+        Schema::create('professeurs', function (Blueprint $table) {
             // $table->dropPrimary();
-            $table->string('id_prof')->primary();
+            $table->bigIncrements('id_prof');
             $table->string('nom');
             $table->string('prenoms');
             $table->string('civilites');

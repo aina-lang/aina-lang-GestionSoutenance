@@ -11,22 +11,21 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('soutenir', function (Blueprint $table) {
+        Schema::create('soutenirs', function (Blueprint $table) {
             // if ($table->hasIndex('PRIMARY')) {
             //     $table->dropPrimary();
             // }
             $table->integer('idorg')->unsigned();
             $table->string('matricule');
-            $table->string('Annee_univ');
+            $table->string('annee_univ');
             $table->integer('note');
             $table->string('president');
             $table->string('examinateur');
             $table->string('rapporteur_int');
             $table->string('rapporteur_ext');
             $table->timestamps();
-
-            $table->foreign('idorg')->references('idorg')->on('organisme')->onDelete('cascade');
-            $table->foreign('matricule')->references('matricule')->on('etudiant')->onDelete('cascade');
+            $table->foreign('idorg')->references('idorg')->on('organismes')->onDelete('cascade');
+            $table->foreign('matricule')->references('matricule')->on('etudiants')->onDelete('cascade');
             $table->primary('Annee_univ');
 
         });

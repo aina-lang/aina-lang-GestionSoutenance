@@ -12,6 +12,13 @@ return new class extends Migration
     public function up(): void
     {
 
+        Schema::create('organismes', function (Blueprint $table) {
+            $table->integerIncrements('idorg');
+            $table->string('design');
+            $table->string('lieu');
+            $table->timestamps();
+        });
+
     }
 
     /**

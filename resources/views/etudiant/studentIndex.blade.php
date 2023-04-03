@@ -14,7 +14,7 @@
 
         <div class="xl:flex justify-between">
             <div class="logo">
-                <h1 class="text-bold text-xl text-indigo-500  mb-9 xl:mb-0 xl:mt-2">Gestion des Professeur</h1>
+                <h1 class="text-bold text-xl text-indigo-500  mb-9 xl:mb-0 xl:mt-2">Gestion des etudiants</h1>
             </div>
             <form class=" mb-9 xl:w-3/6 xl:float-right">
 
@@ -77,7 +77,7 @@
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
                     <th scope="col" class="px-6 py-3">
-                        Id
+                        Matricule
                     </th>
                     <th scope="col" class="px-6 py-3">
                         <div class="flex items-center">
@@ -101,7 +101,7 @@
                     </th>
                     <th scope="col" class="px-6 py-3">
                         <div class="flex items-center">
-                            Civilites
+                            Niveau
                             <a href="#"><svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 ml-1"
                                     aria-hidden="true" fill="currentColor" viewBox="0 0 320 512">
                                     <path
@@ -111,7 +111,17 @@
                     </th>
                     <th scope="col" class="px-6 py-3">
                         <div class="flex items-center">
-                           Grade
+                            Parcours
+                            <a href="#"><svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 ml-1"
+                                    aria-hidden="true" fill="currentColor" viewBox="0 0 320 512">
+                                    <path
+                                        d="M27.66 224h264.7c24.6 0 36.89-29.78 19.54-47.12l-132.3-136.8c-5.406-5.406-12.47-8.107-19.53-8.107c-7.055 0-14.09 2.701-19.45 8.107L8.119 176.9C-9.229 194.2 3.055 224 27.66 224zM292.3 288H27.66c-24.6 0-36.89 29.77-19.54 47.12l132.5 136.8C145.9 477.3 152.1 480 160 480c7.053 0 14.12-2.703 19.53-8.109l132.3-136.8C329.2 317.8 316.9 288 292.3 288z" />
+                                </svg></a>
+                        </div>
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        <div class="flex items-center">
+                            Email
                             <a href="#"><svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 ml-1"
                                     aria-hidden="true" fill="currentColor" viewBox="0 0 320 512">
                                     <path
@@ -127,27 +137,29 @@
             </thead>
             <tbody>
 
-                @foreach ($professeurs as $professeur)
+                @foreach ($etudiants as $etudiant)
                     <tr class="bg-white dark:bg-gray-800">
                         <th scope="row"
                             class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            {{ $professeur->id_prof }}
+                            {{ $etudiant->matricule }}
                         </th>
                         <td class="px-6 py-4">
-                            {{ $professeur->nom }}
+                            {{ $etudiant->nom }}
                         </td>
                         <td class="px-6 py-4">
-                            {{ $professeur->prenoms }}
+                            {{ $etudiant->prenom }}
                         </td>
                         <td class="px-6 py-4">
-                            {{ $professeur->civilites }}
+                            {{ $etudiant->niveau }}
                         </td>
                         <td class="px-6 py-4">
-                            {{ $professeur->grade }}
+                            {{ $etudiant->parcours }}
                         </td>
-
+                        <td class="px-6 py-4">
+                            {{ $etudiant->email }}
+                        </td>
                         <td class="px-6 py-4 text-right">
-                            <a href="{{ route( 'professeur.edit', $professeur ) }}"
+                            <a href="{{ route('etudiant.edit', $etudiant) }}"
                                 class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                         </td>
                         <td class="px-6 py-4 text-right">
@@ -185,8 +197,7 @@
                                             </svg>
                                             <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Are
                                                 you sure you want to delete this product?</h3>
-                                            <form action="{{ route('professeur.destroy', $professeur 
-                                            ) }}" method="POST"
+                                            <form action="{{ route('etudiant.destroy', $etudiant) }}" method="POST"
                                                 class="text-white font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
                                                 @csrf
                                                 @method('DELETE')
@@ -201,6 +212,157 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <!-- Bouton de suppression avec modal de confirmation -->
+                            {{-- <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+                                onclick="event.preventDefault(); document.getElementById('delete-form').submit();">
+                                Delete
+                            </button> --}}
+
+                            <!-- Modal de confirmation de s Bouton de suppression avec modal de confirmation -->
+                            {{-- <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" --}}
+                            {{-- onclick="event.preventDefault(); document.getElementById('delete-form').submit();">
+                                Delete
+                            </button>
+
+                            <!-- Modal de confirmation de suppression -->
+                            <div class="fixed z-10 inset-0 overflow-y-auto hidden" id="delete-modal">
+                                <div class="flex items-center justify-center min-h-screen">
+                                    <div class="bg-white rounded-lg border border-gray-300 shadow-lg p-6">
+                                        <h2 class="text-lg font-bold mb-4">Confirmer la suppression</h2>
+                                        <p class="mb-4">Êtes-vous sûr de vouloir supprimer cet étudiant?</p>
+                                        <div class="flex justify-end">
+                                            <!-- Bouton d'annulation du modal -->
+                                            <button
+                                                class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded mr-4"
+                                                onclick="event.preventDefault(); document.getElementById('delete-modal').classList.add('hidden');">
+                                                Annuler
+                                            </button>
+                                            <!-- Bouton de confirmation de suppression -->
+                                            <form action="{{ route('etudiant.destroy', $etudiant) }}" method="POST"
+                                                id="delete-form">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit"
+                                                    class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+                                                    Supprimer
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Script pour afficher le modal de confirmation -->
+                            <script>
+                                function showDeleteModal() {
+                                    document.getElementById('delete-modal').classList.remove('hidden');
+                                }
+                            </script> --}}
+
+                            {{-- <div class="fixed z-10 inset-0 overflow-y-auto hidden" id="delete-modal">
+                                <div class="flex items-center justify-center min-h-screen">
+                                    <div class="bg-white rounded-lg border border-gray-300 shadow-lg p-6">
+                                        <h2 class="text-lg font-bold mb-4">Confirmer la suppression</h2>
+                                        <p class="mb-4">Êtes-vous sûr de vouloir supprimer cet étudiant?</p>
+                                        <div class="flex justify-end">
+                                            <!-- Bouton d'annulation du modal -->
+                                            <button
+                                                class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded mr-4"
+                                                onclick="event.preventDefault(); document.getElementById('delete-modal').classList.add('hidden');">
+                                                Annuler
+                                            </button>
+                                            <!-- Bouton de confirmation de suppression -->
+                                            <form action="{{ route('etudiant.destroy', $etudiant) }}" method="POST"
+                                                id="delete-form">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit"
+                                                    class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+                                                    Supprimer
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Script pour afficher le modal de confirmation -->
+                            <script>
+                                function showDeleteModal() {
+                                    document.getElementById('delete-modal').classList.remove('hidden');
+                                }
+                            </script> --}}
+
+                            {{-- <form id="delete-form"  action="" >
+                                {{-- @csrf --}}
+                            {{-- @method('DELETE')
+                                <button type="submit" >
+                                    {{-- onclick="if (confirm('Are you sure you want to delete this student ? '+{{$etudiant->matricule }})) { document.getElementById('delete-form').submit(); }"
+                                    Delete Student
+                                </button>
+                            </form> --}}
+
+                            {{-- <button data-modal-target="popup-modal" data-modal-toggle="popup-modal"
+                                data-matricule="{{ $etudiant->matricule }}"
+                                class="block text-red-500 hover:text-red-600 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:text-red-400"
+                                type="button">
+                                supprimer
+                            </button> --}}
+
+                            {{-- <div id="popup-modal" tabindex="-1"
+                                class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full">
+
+                                <form id="delete-form"
+                                    action="{{ route('etudiant.destroy', $etudiant->matricule) }}">
+                                    @csrf
+                                    @method('DELETE')
+                                    <div class="relative w-full h-full max-w-md md:h-auto">
+                                        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                            <button type="button"
+                                                class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
+                                                data-modal-hide="popup-modal">
+                                                <svg aria-hidden="true" class="w-5 h-5" fill="currentColor"
+                                                    viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd"
+                                                        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                                        clip-rule="evenodd"></path>
+                                                </svg>
+                                                <span class="sr-only">Close modal</span>
+                                            </button>
+                                            <div class="p-6 text-center">
+                                                <svg aria-hidden="true"
+                                                    class="mx-auto mb-4 text-gray-400 w-14 h-14 dark:text-gray-200"
+                                                    fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                                </svg>
+                                                <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
+                                                    Are
+                                                    you sure you want to delete this product?
+                                                {{ $etudiant->matricule }}
+                                                </h3>
+                                                <button data-modal-hide="popup-modal" type="submit"
+                                                    class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
+                                                    Yes, I'm sure
+                                                </button>
+                                                <button data-modal-hide="popup-modal" type="button"
+                                                    class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">No,
+                                                    cancel</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button type="button"
+                                        onclick="if (confirm('Are you sure you want to delete this student?')) { document.getElementById('delete-form').submit(); }">
+                                        Delete Student
+                                    </button>
+                                </form>
+
+
+
+                            </div> --}}
                         </td>
                     </tr>
                 @endforeach
@@ -259,7 +421,7 @@
         </nav>
         <div class="button-action mt-10 flex justify-end">
 
-            <a href="{{ route('professeur.create') }}"
+            <a href="{{ route('etudiant.create') }}"
                 class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Ajouter</a>
             {{-- <button type="button" class="py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Alternative</button> --}}
             {{-- <button type="button" class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Dark</button> --}}

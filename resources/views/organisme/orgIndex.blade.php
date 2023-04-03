@@ -1,20 +1,11 @@
 <x-app-layout>
-    <script>
-        const supprimerBtns = document.querySelectorAll('[data-matricule]')
-        supprimerBtns.forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                const matricule = e.target.getAttribute('data-matricule')
-                // Faire quelque chose avec le matricule récupéré, comme envoyer une requête pour supprimer l'étudiant
-                console.log(matricule);
-            })
-        })
-    </script>
-
     <div class="overflow-x-auto  sm:ml-64 mb-10">
 
         <div class="xl:flex justify-between">
             <div class="logo">
-                <h1 class="text-bold text-xl text-indigo-500  mb-9 xl:mb-0 xl:mt-2">Gestion des Professeur</h1>
+                <h1 class="text-bold text-xl text-indigo-500  mb-9 xl:mb-0 xl:mt-2">Gestion des organismes
+                    
+                </h1>
             </div>
             <form class=" mb-9 xl:w-3/6 xl:float-right">
 
@@ -76,12 +67,10 @@
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400    shadow-xl rounded-lg  max-h-40 ">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
-                    <th scope="col" class="px-6 py-3">
-                        Id
-                    </th>
+
                     <th scope="col" class="px-6 py-3">
                         <div class="flex items-center">
-                            Nom
+                           id_org
                             <a href="#"><svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 ml-1"
                                     aria-hidden="true" fill="currentColor" viewBox="0 0 320 512">
                                     <path
@@ -91,7 +80,7 @@
                     </th>
                     <th scope="col" class="px-6 py-3">
                         <div class="flex items-center">
-                            Prenom
+                            designation
                             <a href="#"><svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 ml-1"
                                     aria-hidden="true" fill="currentColor" viewBox="0 0 320 512">
                                     <path
@@ -101,7 +90,7 @@
                     </th>
                     <th scope="col" class="px-6 py-3">
                         <div class="flex items-center">
-                            Civilites
+                            lieu
                             <a href="#"><svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 ml-1"
                                     aria-hidden="true" fill="currentColor" viewBox="0 0 320 512">
                                     <path
@@ -109,16 +98,7 @@
                                 </svg></a>
                         </div>
                     </th>
-                    <th scope="col" class="px-6 py-3">
-                        <div class="flex items-center">
-                           Grade
-                            <a href="#"><svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 ml-1"
-                                    aria-hidden="true" fill="currentColor" viewBox="0 0 320 512">
-                                    <path
-                                        d="M27.66 224h264.7c24.6 0 36.89-29.78 19.54-47.12l-132.3-136.8c-5.406-5.406-12.47-8.107-19.53-8.107c-7.055 0-14.09 2.701-19.45 8.107L8.119 176.9C-9.229 194.2 3.055 224 27.66 224zM292.3 288H27.66c-24.6 0-36.89 29.77-19.54 47.12l132.5 136.8C145.9 477.3 152.1 480 160 480c7.053 0 14.12-2.703 19.53-8.109l132.3-136.8C329.2 317.8 316.9 288 292.3 288z" />
-                                </svg></a>
-                        </div>
-                    </th>
+
                     <th></th>
                     <th scope="col" class="px-6 py-3">
                         <span class="sr-only">Edit</span>
@@ -127,27 +107,21 @@
             </thead>
             <tbody>
 
-                @foreach ($professeurs as $professeur)
+                @foreach ($organismes as $organisme)
                     <tr class="bg-white dark:bg-gray-800">
                         <th scope="row"
                             class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            {{ $professeur->id_prof }}
+                            {{ $organisme->idorg }}
                         </th>
                         <td class="px-6 py-4">
-                            {{ $professeur->nom }}
+                            {{ $organisme->design }}
                         </td>
                         <td class="px-6 py-4">
-                            {{ $professeur->prenoms }}
-                        </td>
-                        <td class="px-6 py-4">
-                            {{ $professeur->civilites }}
-                        </td>
-                        <td class="px-6 py-4">
-                            {{ $professeur->grade }}
+                            {{ $organisme->lieu }}
                         </td>
 
                         <td class="px-6 py-4 text-right">
-                            <a href="{{ route( 'professeur.edit', $professeur ) }}"
+                            <a href="{{ route('organisme.edit', $organisme) }}"
                                 class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                         </td>
                         <td class="px-6 py-4 text-right">
@@ -185,8 +159,7 @@
                                             </svg>
                                             <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Are
                                                 you sure you want to delete this product?</h3>
-                                            <form action="{{ route('professeur.destroy', $professeur 
-                                            ) }}" method="POST"
+                                            <form action="{{ route('organisme.destroy', $organisme) }}" method="POST"
                                                 class="text-white font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
                                                 @csrf
                                                 @method('DELETE')
@@ -201,6 +174,7 @@
                                     </div>
                                 </div>
                             </div>
+
                         </td>
                     </tr>
                 @endforeach
@@ -259,7 +233,7 @@
         </nav>
         <div class="button-action mt-10 flex justify-end">
 
-            <a href="{{ route('professeur.create') }}"
+            <a href="{{ route('organisme.create') }}"
                 class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Ajouter</a>
             {{-- <button type="button" class="py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Alternative</button> --}}
             {{-- <button type="button" class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Dark</button> --}}

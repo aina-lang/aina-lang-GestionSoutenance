@@ -7,7 +7,6 @@
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}" class="">
                         <x-application-mark class="block h-9 w-auto" />
-
                     </a>
                     <h1 class="mx-5 text-2xl font-extrabold">Gestion de soutenance</h1>
                 </div>
@@ -163,7 +162,7 @@
                 </a>
             </li>
             <li>
-                <a href="{{ route('student') }}"
+                <a href="{{ route('etudiant.index') }}"
                     class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                     <svg aria-hidden="true"
                         class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
@@ -175,7 +174,7 @@
                 </a>
             </li>
             <li>
-                <a href="{{ route('professeur') }}""
+                <a href="{{ route('professeur.index') }}"
                     class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                     <svg aria-hidden="true"
                         class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
@@ -187,7 +186,7 @@
                 </a>
             </li>
             <li>
-                <a href="#"
+                <a href="organisme"
                     class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                     <svg aria-hidden="true"
                         class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
@@ -199,7 +198,7 @@
                 </a>
             </li>
             <li>
-                <a href="#"
+                <a href="soutenir"
                     class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                     <svg aria-hidden="true"
                         class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"

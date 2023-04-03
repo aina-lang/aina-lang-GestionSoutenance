@@ -1,7 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\EtudiantController;
+use App\Http\Controllers\ProfesseurController;
+use App\Http\Controllers\OrganismeController;
+use App\Http\Controllers\SoutenirController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,40 +16,27 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/chart', function () {
-    return view('chart');
-});
 
-Route::get('/', function () {
-    return view('auth/login');
-});
-
-Route::get('/addstudent', function () {
-    return view('student/addStudent');
-})->name('student');
 
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-    Route::get('/dashboard', function () {
+
+    Route::get('/', function () {
         return view('dashboard');
     })->name('dashboard');
-    Route::get('/policy', function () {
-        return view('policy');
-    })->name('policy');
 
-    Route::get('/student', function () {
-        return view('student/studentIndex');
-    })->name('student');
-    Route::get('/addstudent', function () {
-        return view('student/addStudent');
-    })->name('student');
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    });
 
-    Route::get('/professeur', function () {
-        return view('professeur/professeurIndex');
-    })->name('professeur');
+    Route::resource('etudiant', EtudiantController::class);
+    Route::resource('professeur', ProfesseurController::class);
+    Route::resource('organisme', OrganismeController::class);
+    Route::resource('soutenir', soutenirController::class);
+
 });
 
 
