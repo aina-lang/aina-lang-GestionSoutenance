@@ -35,7 +35,7 @@ Route::middleware([
     Route::resource('etudiant', EtudiantController::class);
     Route::resource('professeur', ProfesseurController::class);
     Route::resource('organisme', OrganismeController::class);
-    Route::resource('soutenir', soutenirController::class);
+    Route::resource('soutenir', SoutenirController::class);
 
 });
 

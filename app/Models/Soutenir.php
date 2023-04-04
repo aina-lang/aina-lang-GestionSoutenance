@@ -46,11 +46,15 @@ class Soutenir extends Model
         return $this->belongsTo(Professeur::class, 'examinateur');
     }
 
-    public function rapporteurs()
+    public function rapporteur_ext()
     {
-        return $this->belongsTo(Professeur::class, 'rapporteur');
+        return $this->belongsTo(Professeur::class, 'rapporteur_ext');
     }
 
+    public function rapporteur_int()
+    {
+        return $this->belongsTo(Professeur::class, 'rapporteur_int');
+    }
     // public function etudiants()
     // {
     //     return $this->belongsTo(Etudiant::class, 'matricule');

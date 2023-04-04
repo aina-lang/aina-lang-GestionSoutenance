@@ -11,19 +11,27 @@ class SoutenirController extends Controller
     public function index()
     {
         // $soutenances = Soutenir::join('etudiants', 'soutenirs.matricule', '=', 'etudiants.matricule')
-        // ->join('organismes', 'soutenirs.idorg', '=', 'organismes.idorg')
-        // ->orderBy('soutenirs.created_at', 'desc')
-        // ->paginate(10);
-        $soutenances = Soutenir::with(['etudiants', 'organismes', 'professeur'])
-        ->orderBy('created_at', 'desc')
-        ->paginate(10);
-        return view('soutenir.index', compact('soutenances'));
+        //     ->join('organismes', 'soutenirs.idorg', '=', 'organismes.idorg')
+        //     ->orderBy('soutenirs.created_at', 'desc')
+        //     ->select('soutenirs.*', 'etudiants.nom')
+        //     ->paginate(10);
+
+        // return view('soutenir.index', compact('soutenances'));
+
+    $soutenances = Soutenir::with(['etudiants', 'presidents', 'examinateurs', 'rapporteur_int', 'rapporteur_ext'])
+                            ->orderBy('created_at', 'desc')
+                            ->paginate(10);
+    return view('soutenir.index', compact('soutenances'));
+
+
     }
+
 
 
     public function show(Soutenir $soutenir){
 
     }
+
     // Méthode pour afficher le formulaire d'ajout
     public function create()
     {
