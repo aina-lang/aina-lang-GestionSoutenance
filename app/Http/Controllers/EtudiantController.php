@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Etudiant;
 use Illuminate\Http\Request;
+use PDF;
+
 
 class EtudiantController extends Controller
 {
@@ -12,10 +14,24 @@ class EtudiantController extends Controller
      */
     public function index()
     {
-        $etudiants = Etudiant::all();
-        // orderBy('matricule','desc')->paginate(15)
+        $etudiants = Etudiant::orderBy('matricule','desc')->paginate(2);
         return view('etudiant.studentIndex', compact('etudiants'));
     }
+
+    public function recherche(Request $request)
+    {
+        $query = $request->input('query');
+
+        $etudiants = Etudiant::where('nom', 'like', '%' . $query . '%')
+                              ->orWhere('prenom', 'like', '%' . $query . '%')
+                              ->orWhere('niveau', 'like', '%' . $query . '%')
+                              ->orWhere('parcours', 'like', '%' . $query . '%')
+                              ->orWhere('email', 'like', '%' . $query . '%')
+                              ->get();
+
+        return view('etudiant.recherche', compact('etudiants', 'query'));
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -30,18 +46,28 @@ class EtudiantController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'matricule' => 'required|integer|unique:etudiants',
+            'nom' => 'required',
+            'prenoms' => 'required',
+            'niveau' => 'required',
+            'parcours' => 'required',
+            'adr_email' => 'required|email',
+        ]);
 
-        $etudiant=new Etudiant;
-        $etudiant->matricule=$request->get('matricule');
-        $etudiant->nom=$request->get('nom');
-        $etudiant->prenom=$request->get('prenom');
-        $etudiant->niveau=$request->get('niveau');
-        $etudiant->parcours=$request->get('parcours');
-        $etudiant->email=$request->get('email');
+        // Création de l'étudiant
+        $etudiant = new Etudiant([
+            'matricule' => $request->get('matricule'),
+            'nom' => $request->get('nom'),
+            'prenoms' => $request->get('prenoms'),
+            'niveau' => $request->get('niveau'),
+            'parcours' => $request->get('parcours'),
+            'adr_email' => $request->get('adr_email')
+        ]);
         $etudiant->save();
-        return redirect('etudiant');
-    }
 
+        return redirect('/etudiants')->with('success', 'Etudiant ajouté avec succès!');
+    }
     /**
      * Display the specified resource.
      */
@@ -82,12 +108,20 @@ class EtudiantController extends Controller
 /**
  * Remove the specified resource from storage.
  */
-public function destroy(Etudiant $etudiant)
-{
-    $etudiant->delete();
-    return redirect('etudiant')->with('success', 'L\'étudiant a été supprimé avec succès.');
-}
+    public function destroy(Etudiant $etudiant)
+    {
+        $etudiant->delete();
+        return redirect('etudiant')->with('success', 'L\'étudiant a été supprimé avec succès.');
+    }
 
 
+
+    public function getPdf(Etudiant $etudiants)
+    {
+        // $etudiants = Etudiant::orderBy('matricule','desc')->paginate(2);
+        // L'instance PDF avec la vue resources/views/posts/show.blade.php
+        $pdf = PDF::loadView('etudiant.pdf', compact('etudiants'));
+        return $pdf->download('etudiants.pdf');
+    }
 
 }

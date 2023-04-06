@@ -14,7 +14,7 @@ class ProfesseurController extends Controller
     {
         //
         // $professeurs=new Professeur;
-        $professeurs=Professeur::all();
+        $professeurs=Professeur::orderBy('id_prof','desc')->paginate(2);
         return view('professeur.professeurIndex',compact('professeurs'));
     }
 
@@ -76,7 +76,7 @@ class ProfesseurController extends Controller
      */
     public function destroy(Professeur $professeur)
     {
-        
+
         $professeur->delete();
         return redirect('professeur')->with('success', 'L\'étudiant a été supprimé avec succès.');
     }

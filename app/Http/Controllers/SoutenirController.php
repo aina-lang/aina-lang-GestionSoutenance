@@ -20,7 +20,7 @@ class SoutenirController extends Controller
 
     $soutenances = Soutenir::with(['etudiants', 'presidents', 'examinateurs', 'rapporteur_int', 'rapporteur_ext'])
                             ->orderBy('created_at', 'desc')
-                            ->paginate(10);
+                            ->paginate(3);
     return view('soutenir.index', compact('soutenances'));
 
 

@@ -12,7 +12,7 @@ class OrganismeController extends Controller
      */
     public function index()
     {
-        $organismes=Organisme::all();
+        $organismes=Organisme::orderBy('idorg','desc')->paginate(2);
          return view('organisme.orgIndex',compact('organismes'));
     }
 

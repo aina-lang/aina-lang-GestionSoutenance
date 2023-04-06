@@ -1,4 +1,4 @@
-<?php
+bower install select2<?php
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;

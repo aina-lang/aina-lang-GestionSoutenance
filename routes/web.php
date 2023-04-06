@@ -5,6 +5,10 @@ use App\Http\Controllers\EtudiantController;
 use App\Http\Controllers\ProfesseurController;
 use App\Http\Controllers\OrganismeController;
 use App\Http\Controllers\SoutenirController;
+use App\Models\Etudiant;
+use App\Models\Organisme;
+use App\Models\Professeur;
+use App\Models\Soutenir;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,13 +29,28 @@ Route::middleware([
 ])->group(function () {
 
     Route::get('/', function () {
-        return view('dashboard');
+        $etudiantsCount = Etudiant::count();
+        $professeursCount = Professeur::count();
+        $soutenirsCount = Soutenir::count();
+        $organismesCount = Organisme::count();
+
+        return view('dashboard', compact('etudiantsCount', 'professeursCount', 'soutenirsCount', 'organismesCount'));
     })->name('dashboard');
 
     Route::get('/dashboard', function () {
+        $etudiantsCount = Etudiant::count();
+        $profsCount = Professeur::count();
+        $soutenancesCount = Soutenir::count();
+        $organismesCount = Organisme::count();
+
+    return view('dashboard', compact('etudiantsCount', 'profsCount', 'soutenancesCount', 'organismesCount'));
         return view('dashboard');
     });
 
+    Route::get('/recherche-etudiant', [EtudiantController::class, 'recherche'])->name('etudiant.recherche');
+    Route::get('/etudiant/pdf', [EtudiantController::class, 'getPdf'])->name('etudiant.pdf');
+
+    // Route::resource('dashboard', DashboardController::class);
     Route::resource('etudiant', EtudiantController::class);
     Route::resource('professeur', ProfesseurController::class);
     Route::resource('organisme', OrganismeController::class);
