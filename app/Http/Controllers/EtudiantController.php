@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use PDF;
 use App\Models\Etudiant;
 use Illuminate\Http\Request;
-use PDF;
+use Illuminate\Support\Facades\Validator;
+// use Illuminate\Validation\Validator;
 
 
 class EtudiantController extends Controller
@@ -14,8 +16,9 @@ class EtudiantController extends Controller
      */
     public function index()
     {
-        $etudiants = Etudiant::orderBy('matricule','desc')->paginate(20);
-        return view('etudiant.studentIndex', compact('etudiants'));
+        // $etudiants = Etudiant::orderBy('matricule','desc')->paginate(4);
+        $etudiants=Etudiant::all();
+        return view('etudiant.index', compact('etudiants'));
     }
 
     public function recherche(Request $request)
@@ -124,7 +127,7 @@ class EtudiantController extends Controller
      */
     public function create()
     {
-        return view('etudiant.addStudent');
+        return view('etudiant.create');
     }
 
     /**
@@ -132,14 +135,18 @@ class EtudiantController extends Controller
      */
     public function store(Request $request)
     {
-        // $request->validate([
-        //     'matricule' => 'required|integer|unique:etudiants',
-        //     'nom' => 'required|string',
-        //     'prenom' => 'required|string',
-        //     'niveau' => 'required|string',
-        //     'parcours' => 'required|string',
-        //     'email' => 'required|email',
-        // ]);
+        $validator=Validator::make($request->all(),[
+            'matricule' => 'required|integer|unique:etudiants',
+            'nom' => 'bail|required|string',
+            'prenoms' => 'bail|required|string',
+            'niveau' => 'required',
+            'parcours' => 'required',
+            'email' => 'required|email',
+        ]);
+
+        if($validator->fails()){
+            return back()->withInput()->withErrors($validator->errors());
+        }
 
         // Création de l'étudiant
         $etudiant = new Etudiant([
@@ -159,7 +166,7 @@ class EtudiantController extends Controller
      */
     public function show(Etudiant $etudiant)
     {
-        return view('etudiant.editStudent', compact('etudiant'));
+        return view('etudiant.edit', compact('etudiant'));
     }
 
     /**
@@ -167,7 +174,7 @@ class EtudiantController extends Controller
      */
     public function edit(Etudiant $etudiant)
     {
-        return view('etudiant.editStudent', compact('etudiant'));
+        return view('etudiant.edit', compact('etudiant'));
     }
 
     /**
@@ -202,11 +209,13 @@ class EtudiantController extends Controller
 
 
 
-    public function getPdf(Etudiant $etudiants)
+    public function getPdf(Etudiant $etudiant)
     {
+    //    echo  $etudiant;
+    //     return;
         // $etudiants = Etudiant::orderBy('matricule','desc')->paginate(2);
         // L'instance PDF avec la vue resources/views/posts/show.blade.php
-        $pdf = PDF::loadView('etudiant.pdf', compact('etudiants'));
+        $pdf = PDF::loadView('etudiant.pdf',compact('etudiant'));
         return $pdf->download('etudiants.pdf');
     }
 

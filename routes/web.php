@@ -39,16 +39,15 @@ Route::middleware([
 
     Route::get('/dashboard', function () {
         $etudiantsCount = Etudiant::count();
-        $profsCount = Professeur::count();
-        $soutenancesCount = Soutenir::count();
+        $professeursCount = Professeur::count();
+        $soutenirsCount = Soutenir::count();
         $organismesCount = Organisme::count();
 
-    return view('dashboard', compact('etudiantsCount', 'profsCount', 'soutenancesCount', 'organismesCount'));
-        return view('dashboard');
+        return view('dashboard', compact('etudiantsCount', 'professeursCount', 'soutenirsCount', 'organismesCount'));
     });
 
     Route::get('/recherche-etudiant', [EtudiantController::class, 'recherche'])->name('etudiant.recherche');
-    Route::get('/etudiant/pdf', [EtudiantController::class, 'getPdf'])->name('etudiant.pdf');
+    Route::get('/etudiant/pdf/{etudiant}', [EtudiantController::class, 'getPdf'])->name('etudiant.pdf');
 
     // Route::resource('dashboard', DashboardController::class);
     Route::resource('etudiant', EtudiantController::class);

@@ -16,6 +16,8 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link href="{{ asset('css/select2.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/flowbite.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/all.min.css') }}" rel="stylesheet" />
+
     <!-- Styles -->
     @livewireStyles
 </head>
@@ -23,25 +25,22 @@
 <body class="font-sans antialiased">
     <x-banner />
 
-    <script src="{{ asset('js/jquery.min.js') }}" ></script>
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+
     <div class="min-h-screen bg-gray-100">
         @livewire('navigation-menu')
-
         <!-- Page Heading -->
         @if (isset($header))
-
         @endif
 
         <!-- Page Content -->
-        <main class="p-4 pt-20">
+        <main class="p-4 pt-20 w-auto">
             {{ $slot }}
         </main>
-
     </div>
 
-
     <script src="{{ asset('js/select2.min.js') }}"></script>
-    <script src="{{ asset('js/flowbite.min.js') }}" ></script>
+    <script src="{{ asset('js/flowbite.min.js') }}"></script>
     <script src="{{ asset('js/script.js') }}"></script>
 </body>
 

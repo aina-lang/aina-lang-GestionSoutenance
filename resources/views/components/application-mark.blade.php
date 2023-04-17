@@ -1,1 +1,1 @@
-<img src="images/chapeau-de-remise-de-diplome.png"class="w-8 h-8 mx-auto" alt="" srcset="">
+<i class="fa-sharp fa-solid fa-graduation-cap fa-spin text-white text-3xl"></i>
