@@ -4,7 +4,7 @@
 
         <div class="xl:flex justify-between outline-none">
             <div class="logo">
-                <h1 class="text-bold text-xl text-gray-900 font-bold  mb-9 xl:mb-0 xl:mt-2">Gestion des etudiants</h1>
+                <h1 class="text-bold text-xl text-gray-900 font-bold  mb-9 xl:mb-0 xl:mt-2">Etudiants qui n'ont pas fait de soutenance</h1>
 
             </div>
             <form class=" mb-9 xl:w-3/6 xl:float-right outline-none">

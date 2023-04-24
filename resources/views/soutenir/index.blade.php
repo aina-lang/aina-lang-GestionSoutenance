@@ -98,7 +98,7 @@
                     </th>
                     <th scope="col" class="px-6 py-3">
                         <div class="flex items-center">
-                            examinateur
+                            Examinateur
                             <a href="#"><svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 ml-1"
                                     aria-hidden="true" fill="currentColor" viewBox="0 0 320 512">
                                     <path
@@ -108,7 +108,7 @@
                     </th>
                     <th scope="col" class="px-6 py-3">
                         <div class="flex items-center">
-                            rapporteur interne
+                            Rapporteur interne
                             <a href="#"><svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 ml-1"
                                     aria-hidden="true" fill="currentColor" viewBox="0 0 320 512">
                                     <path
@@ -118,7 +118,7 @@
                     </th>
                     <th scope="col" class="px-6 py-3">
                         <div class="flex items-center">
-                            rapporteur externe
+                            Rapporteur externe
                             <a href="#"><svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 ml-1"
                                     aria-hidden="true" fill="currentColor" viewBox="0 0 320 512">
                                     <path
@@ -127,7 +127,14 @@
                         </div>
                     </th>
                     <th scope="col" class="px-6 py-3 w-full">
-                        <span class="sr-only">Edit</span>
+                        <div class="flex items-center">
+                            Edit
+                            <a href="#"><svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 ml-1"
+                                    aria-hidden="true" fill="currentColor" viewBox="0 0 320 512">
+                                    <path
+                                        d="M27.66 224h264.7c24.6 0 36.89-29.78 19.54-47.12l-132.3-136.8c-5.406-5.406-12.47-8.107-19.53-8.107c-7.055 0-14.09 2.701-19.45 8.107L8.119 176.9C-9.229 194.2 3.055 224 27.66 224zM292.3 288H27.66c-24.6 0-36.89 29.77-19.54 47.12l132.5 136.8C145.9 477.3 152.1 480 160 480c7.053 0 14.12-2.703 19.53-8.109l132.3-136.8C329.2 317.8 316.9 288 292.3 288z" />
+                                </svg></a>
+                        </div>
                     </th>
                 </tr>
             </thead>
@@ -163,37 +170,35 @@
                         <td class="px-6 py-4">
                             {{ $soutenance->rapporteur_exts->nom . ' ' . $soutenance->rapporteur_exts->prenoms }}
                         </td>
-                        {{-- <td class="px-6 py-4 text-right">
-                            <a href="{{ route('soutenir.edit', $soutenance) }}"
-                                class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                        </td> --}}
-                        <td class="px-6 py-4 text-right">
+
+                        <td class="px-6 py-4  flex ">
 
 
                             <a href="{{ route('soutenir.edit', $soutenance) }}"
-                            class=" text-blue-600 hover:text-blue-700 focus:ring-4 focus:outline-none open-modal focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 text-center">
-                            <i class="fa-solid fa-pen-to-square transform transition-all hover:rotate-45"></i>
-                        </a>
+                                class=" text-blue-600 hover:text-blue-700 focus:ring-4 focus:outline-none open-modal focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5  text-center">
+                                <i class="fa-solid fa-pen-to-square transform transition-all hover:rotate-45"></i>
+                            </a>
 
-                            <button data-modal-target="popup-modal{{$i}}" data-modal-toggle="popup-modal{{$i}}"
+                            <button data-modal-target="popup-modal{{ $i }}"
+                                data-modal-toggle="popup-modal{{ $i }}"
                                 class="block text-red-600 hover:text-red-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
                                 type="button">
-                                Supprimer
+                               <i class="fa fa-trash"></i>
                             </button>
 
                             <a href="{{ route('soutenir.pdf', $soutenance) }}"
-                                class=" hover:rotate-45 text-green-600 hover:text-green-700 focus:ring-4 focus:outline-none open-modal focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 text-center">
+                                class=" hover:rotate-45 text-green-600 hover:text-green-700 focus:ring-4 focus:outline-none open-modal focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5  text-center">
                                 <i class="fa-solid fa-print "></i>
                             </a>
 
 
-                            <div id="popup-modal{{$i}}" tabindex="-1"
+                            <div id="popup-modal{{ $i }}" tabindex="-1"
                                 class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full">
                                 <div class="relative w-full h-full max-w-md md:h-auto">
                                     <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                                         <button type="button"
                                             class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
-                                            data-modal-hide="popup-modal{{$i}}">
+                                            data-modal-hide="popup-modal{{ $i }}">
                                             <svg aria-hidden="true" class="w-5 h-5" fill="currentColor"
                                                 viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                                 <path fill-rule="evenodd"
@@ -212,7 +217,7 @@
                                             </svg>
                                             <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Vous
                                                 êtes sûre d'effacer le soutenance ?</h3>
-                                            <form action="{{ route('soutenir.destroy', $soutenance ) }}"
+                                            <form action="{{ route('soutenir.destroy', $soutenance) }}"
                                                 method="POST"
                                                 class="text-white font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
                                                 @csrf
@@ -221,7 +226,7 @@
                                                     class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">Je
                                                     suis sure {{ $soutenance }}</button>
                                             </form>
-                                            <button data-modal-hide="popup-modal{{$i}}" type="button"
+                                            <button data-modal-hide="popup-modal{{ $i }}" type="button"
                                                 class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">No,
                                                 cancel</button>
                                         </div>
@@ -237,20 +242,7 @@
 
         {{ $soutenances->links() }}
 
-        <div class="button-action mt-10 flex justify-end">
-
-            <a href="{{ route('soutenir.create') }}"
-                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Ajouter</a>
-            {{-- <button type="button" class="py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Alternative</button> --}}
-            {{-- <button type="button" class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Dark</button> --}}
-            {{-- <button type="button" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Light</button> --}}
-            <button type="button"
-                class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Green</button>
-
-            {{-- <button type="button" class="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:focus:ring-yellow-900">Yellow</button> --}}
-            {{-- <button type="button" class="focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900">Purple</button> --}}
-
-        </div>
+     
     </div>
 
 </x-app-layout>

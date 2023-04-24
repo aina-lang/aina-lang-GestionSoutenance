@@ -202,19 +202,6 @@ class EtudiantController extends Controller
         return redirect('etudiant')->with('success', 'L\'étudiant a été modifié avec succès.');
     }
 
-    // public function getNotes(Request $request)
-    // {
-    //     $startDate = $request->input('start_date');
-    //     $endDate = $request->input('end_date');
-
-    //     $notes = DB::table('etudiants')
-    //                 ->join('soutenances', 'etudiants.matricule', '=', 'soutenances.matricule')
-    //                 ->whereBetween('soutenances.date', [$startDate, $endDate])
-    //                 ->select('etudiants.nom', 'soutenances.note')
-    //                 ->get();
-
-    //     return view('notes', compact('notes'));
-    // }
 
     public function parNiveau()
     {

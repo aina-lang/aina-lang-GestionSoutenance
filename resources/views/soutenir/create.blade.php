@@ -1,5 +1,8 @@
 <x-app-layout>
     <div class="w-90 mx-auto overflow-x-auto  sm:ml-64 mb-10">
+        <div class="logo mb-10">
+            <h1 class="text-bold text-xl text-indigo-500  mb-9 xl:mb-0 xl:mt-2">Ajout d'un Soutenance</h1>
+        </div>
         <form action="{{ route('soutenir.store') }}" method="POST"
             class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 grid xl:grid-cols-2 gap-10 justify-center p-4">
             @csrf

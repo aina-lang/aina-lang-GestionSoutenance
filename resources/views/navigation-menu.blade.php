@@ -177,14 +177,14 @@
                 <a href="{{ route('soutenir.index') }}"
                     class="flex items-center p-2 pl-8 text-lg font-normal text-gray-500 rounded-r-full dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                     <i class="fa-solid fa-graduation-cap  transform transition-all hover:rotate-45"></i>
-                    <span class="flex-1 ml-3 whitespace-nowrap">Soutenir</span>
+                    <span class="flex-1 ml-3 whitespace-nowrap">Soutenance </span>
                 </a>
             </li>
             <li>
                 <a href="{{route('etudiant.passoutenance')}}"
                     class="flex items-center p-2 pl-8 text-lg font-normal text-gray-500 rounded-r-full dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                     <i class="fa-solid fa-user  transform transition-all hover:rotate-45"></i>
-                    <span class="flex-1 ml-3 whitespace-nowrap">Etudiants qui n'ont pas fait de soutenance</span>
+                    <span class="flex-1 ml-3 whitespace-nowrap">Soutenance restant</span>
                 </a>
             </li>
             <li>

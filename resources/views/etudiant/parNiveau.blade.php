@@ -373,9 +373,12 @@
                 </tr>
             </tbody>
         </table>
+       <div class="flex space-x-5">
         @foreach ($niveaux as $niveau)
-            <h2>Niveau {{ $niveau->niveau }} ({{ $niveau->total }})</h2>
+        <h2 class="text-xl font-bold text-gray-500 ml-5">Niveau {{ $niveau->niveau }} ({{ $niveau->total }})</h2>
+
         @endforeach
+       </div>
         @php
             $i = 0;
         @endphp
