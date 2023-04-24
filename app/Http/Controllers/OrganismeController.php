@@ -50,7 +50,7 @@ class OrganismeController extends Controller
      */
     public function edit(Organisme $organisme)
     {
-        return view('organisme.editOrga');
+        return view('organisme.editOrga',compact('organisme'));
     }
 
     /**
@@ -62,6 +62,7 @@ class OrganismeController extends Controller
         $organisme->design=$request->design;
         $organisme->lieu=$request->lieu;
         $organisme->save();
+        return redirect('organisme');
     }
 
     /**
@@ -70,5 +71,6 @@ class OrganismeController extends Controller
     public function destroy(Organisme $organisme)
     {
         //
+        return redirect('organisme');
     }
 }

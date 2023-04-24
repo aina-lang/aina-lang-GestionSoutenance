@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use PDF;
 use App\Models\Etudiant;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 // use Illuminate\Validation\Validator;
 
@@ -34,12 +35,21 @@ class EtudiantController extends Controller
                               ->get();
 
         $output='';
+
+        $i = 0;
+
         foreach ($etudiants as $etudiant) {
+            $i++;
             $output.="
             <tr class='bg-white dark:bg-gray-800'>
-                <th scope='row'
-                    class='px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white'>
-                    $etudiant->matricule
+                <th scope='row' class=' overflow-hidden font-medium text-gray-900  dark:text-white tracking-wide'>
+                    <div class='px-12 py-8 text-center  bg-yellow-200 ''>
+                        <button data-modal-target='editEtudiantModal{$i}'
+                            data-modal-toggle='editEtudiantModal{$i}'
+                            class='text-yellow-700 font-bold' type='button'>
+                                 $etudiant->matricule
+                        </button>
+                    </div>
                 </th>
                 <td class='px-6 py-4'>
                     $etudiant->nom
@@ -192,12 +202,45 @@ class EtudiantController extends Controller
         return redirect('etudiant')->with('success', 'L\'étudiant a été modifié avec succès.');
     }
 
+    // public function getNotes(Request $request)
+    // {
+    //     $startDate = $request->input('start_date');
+    //     $endDate = $request->input('end_date');
 
-    /**
-     * Remove the specified resource from storage.
-     */
+    //     $notes = DB::table('etudiants')
+    //                 ->join('soutenances', 'etudiants.matricule', '=', 'soutenances.matricule')
+    //                 ->whereBetween('soutenances.date', [$startDate, $endDate])
+    //                 ->select('etudiants.nom', 'soutenances.note')
+    //                 ->get();
+
+    //     return view('notes', compact('notes'));
+    // }
+
+    public function parNiveau()
+    {
+         // Récupérer tous les niveaux et leur effectif total
+    $niveaux = Etudiant::select('niveau', DB::raw('count(*) as total'))
+    ->groupBy('niveau')
+    ->orderBy('niveau')
+    ->get();
+
+// Récupérer tous les étudiants inscrits
+$etudiants = Etudiant::orderBy('niveau')
+    ->orderBy('nom')
+    ->get();
+
+return view('etudiant.parNiveau', compact('etudiants', 'niveaux'));
+    }
 
 
+    public function passoutenance(){
+        $etudiants = Etudiant::whereNotIn('matricule', function ($query) {
+            $query->select('matricule')->from('soutenirs');
+        })->get();
+
+
+        return view('etudiant.passoutenance', compact('etudiants'));
+    }
 /**
  * Remove the specified resource from storage.
  */

@@ -15,18 +15,19 @@ return new class extends Migration
             // if ($table->hasIndex('PRIMARY')) {
             //     $table->dropPrimary();
             // }
+            $table->integerIncrements('id');
             $table->integer('idorg')->unsigned();
             $table->string('matricule');
             $table->string('annee_univ');
-            $table->integer('note');
+            $table->float('note');
             $table->string('president');
             $table->string('examinateur');
             $table->string('rapporteur_int');
             $table->string('rapporteur_ext');
             $table->timestamps();
-            $table->foreign('idorg')->references('idorg')->on('organismes')->onDelete('cascade');
-            $table->foreign('matricule')->references('matricule')->on('etudiants')->onDelete('cascade');
-            $table->primary('Annee_univ');
+            $table->foreign('idorg')->references('idorg')->on('organismes')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('matricule')->references('matricule')->on('etudiants')->onDelete('cascade')->onUpdate('cascade');
+            // $table->primary('Annee_univ');
 
         });
     }

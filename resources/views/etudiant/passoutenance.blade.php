@@ -27,22 +27,6 @@
             </form>
 
         </div>
-        <div class="mb-5">
-            <form action="{{ route('etudiant.note') }}" method="GET" class="flex flex-row">
-                @csrf
-                @method('GET')
-                <div class="flex flex-row space-x-2">
-                    <label for="annee_debut" class="font-medium text-gray-900 w-30">Année de début :</label>
-                    <input type="text" name="annee_debut" id="start_year" required class="w-20 h-8 border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50 p-2 text-sm">
-                    <label for="annee_fin" class="font-medium text-gray-900">Année de fin :</label>
-                    <input type="text" name="annee_fin" id="end_year" required class="w-20 h-8 border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50 p-2 text-sm">
-                </div>
-                <button type="submit"
-                    class=" bg-blue-500 hover:bg-blue-600 focus:ring focus:ring-blue-500 focus:ring-opacity-50 text-white font-medium py-2 px-4 h-10 mx-5 rounded-md shadow-sm transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105">
-                    Afficher les soutenances
-                </button>
-            </form>
-        </div>
 
         <table
             class="min-w-full mx-auto text-sm text-left text-gray-500 dark:text-gray-400    shadow-xl rounded-lg mb-5 hidden xl:block ">

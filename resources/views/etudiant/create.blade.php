@@ -41,7 +41,7 @@
                     <div class="mb-4 w-100">
                         <label for="niveau" class="block text-gray-700 font-bold mb-2">Niveau</label>
                         <select id="niveau" name="niveau"
-                            class="w-full px-3 py-8 border rounded-md outline-none focus:ring-2 focus:ring-blue-500 "
+                            class="w-full px-3 py-2 border rounded-md outline-none focus:ring-2 focus:ring-blue-500 "
                             name="state">
                             <option value="">Choisir un niveau</option>
                             <option value="Licence 1">Licence 1</option>
@@ -58,11 +58,9 @@
                             class="w-full px-3 py-2 border rounded-md outline-none focus:ring-2 focus:ring-blue-500"
                             required>
                             <option value="">Choisir un parcours</option>
-                            <option value="Informatique">Informatique</option>
-                            <option value="Génie Civil">Génie Civil</option>
-                            <option value="Droit">Droit</option>
-                            <option value="Marketing">Marketing</option>
-                            <option value="Finance">Finance</option>
+                            <option value="GB">GB</option>
+                            <option value="SR">SR</option>
+                            <option value="IG">IG</option>
                         </select>
                     </div>
                     <div class="mb-4">
@@ -77,7 +75,7 @@
                 </div>
             </div>
 
-            <div class="flex  justify-center xl:justify-end space-x-3 px-4">
+            <div class="flex  sm:justify-end xl:justify-end space-x-3 px-4">
                 <button type="reset"
                     class="px-4 py-2 text-gray-700 border border-gray-500 rounded-md hover:bg-gray-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-gray-500">
                     Réinitialiser
@@ -90,7 +88,7 @@
 
                 <div id="toast-success"
                     class="flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800"
-                    role="alert" style="position:absolute;top:80px;right:-1000px;z-index:9999;transition:0.5s;">
+                    role="alert" style="position:fixed;top:80px;right:-1000px;z-index:9999;transition:0.5s;">
                     <div
                         class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-green-500 bg-green-100 rounded-lg dark:bg-green-800 dark:text-green-200">
                         <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
@@ -111,7 +109,7 @@
                 </div>
                 <div id="toast-danger"
                     class="flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800"
-                    role="alert">
+                    role="alert" style="position:fixed;top:80px;right:-1000px;z-index:9999;transition:0.5s;">
                     <div
                         class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-red-500 bg-red-100 rounded-lg dark:bg-red-800 dark:text-red-200">
                         <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
@@ -138,9 +136,9 @@
                 <script>
                     function displaySuccessMessage() {
                         var message = document.getElementById("toast-success");
-                        message.style.right = "0px";
+                        message.style.right = "50px";
                         setTimeout(() => {
-                            message.style.right = "-1000px";
+                            message.style.right = "-1030px";
                         }, 3000);
                     }
                     // function displaySuccessMessage() {

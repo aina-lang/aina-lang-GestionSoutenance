@@ -3,5 +3,5 @@ console.log("helooo");
 
 $(document).ready(function() {
     console.log("helooo");
-    $('select').select2();
+    $('.select').select2();
 });

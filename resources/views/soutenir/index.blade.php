@@ -1,11 +1,9 @@
 <x-app-layout>
-    <div class="overflow-x-auto  sm:ml-64 mb-10">
+    <div class="px-4 sm:ml-64 mb-10 "">
 
-        <div class="xl:flex justify-between">
+        <div class="xl:flex justify-between outline-none">
             <div class="logo">
-                <h1 class="text-bold text-xl text-indigo-500  mb-9 xl:mb-0 xl:mt-2">Gestion des organismes
-
-                </h1>
+                <h1 class="text-bold text-xl text-gray-900 font-bold  mb-9 xl:mb-0 xl:mt-2">Gestion des soutenances</h1>
             </div>
             <form class=" mb-9 xl:w-3/6 xl:float-right">
 
@@ -64,13 +62,13 @@
             </form>
         </div>
 
-        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400    shadow-xl rounded-lg  max-h-40 mb-5">
+        <table
+            class="min-w-full mx-auto text-sm text-left text-gray-500 dark:text-gray-400    shadow-xl rounded-lg mb-5 hidden xl:block ">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
-
                     <th scope="col" class="px-6 py-3">
                         <div class="flex items-center">
-                           id_org
+                            Etudiant
                             <a href="#"><svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 ml-1"
                                     aria-hidden="true" fill="currentColor" viewBox="0 0 320 512">
                                     <path
@@ -80,7 +78,7 @@
                     </th>
                     <th scope="col" class="px-6 py-3">
                         <div class="flex items-center">
-                            designation
+                            Note
                             <a href="#"><svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 ml-1"
                                     aria-hidden="true" fill="currentColor" viewBox="0 0 320 512">
                                     <path
@@ -90,7 +88,7 @@
                     </th>
                     <th scope="col" class="px-6 py-3">
                         <div class="flex items-center">
-                            lieu
+                            President des jury
                             <a href="#"><svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 ml-1"
                                     aria-hidden="true" fill="currentColor" viewBox="0 0 320 512">
                                     <path
@@ -98,28 +96,73 @@
                                 </svg></a>
                         </div>
                     </th>
-
-                    <th></th>
                     <th scope="col" class="px-6 py-3">
+                        <div class="flex items-center">
+                            examinateur
+                            <a href="#"><svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 ml-1"
+                                    aria-hidden="true" fill="currentColor" viewBox="0 0 320 512">
+                                    <path
+                                        d="M27.66 224h264.7c24.6 0 36.89-29.78 19.54-47.12l-132.3-136.8c-5.406-5.406-12.47-8.107-19.53-8.107c-7.055 0-14.09 2.701-19.45 8.107L8.119 176.9C-9.229 194.2 3.055 224 27.66 224zM292.3 288H27.66c-24.6 0-36.89 29.77-19.54 47.12l132.5 136.8C145.9 477.3 152.1 480 160 480c7.053 0 14.12-2.703 19.53-8.109l132.3-136.8C329.2 317.8 316.9 288 292.3 288z" />
+                                </svg></a>
+                        </div>
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        <div class="flex items-center">
+                            rapporteur interne
+                            <a href="#"><svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 ml-1"
+                                    aria-hidden="true" fill="currentColor" viewBox="0 0 320 512">
+                                    <path
+                                        d="M27.66 224h264.7c24.6 0 36.89-29.78 19.54-47.12l-132.3-136.8c-5.406-5.406-12.47-8.107-19.53-8.107c-7.055 0-14.09 2.701-19.45 8.107L8.119 176.9C-9.229 194.2 3.055 224 27.66 224zM292.3 288H27.66c-24.6 0-36.89 29.77-19.54 47.12l132.5 136.8C145.9 477.3 152.1 480 160 480c7.053 0 14.12-2.703 19.53-8.109l132.3-136.8C329.2 317.8 316.9 288 292.3 288z" />
+                                </svg></a>
+                        </div>
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        <div class="flex items-center">
+                            rapporteur externe
+                            <a href="#"><svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 ml-1"
+                                    aria-hidden="true" fill="currentColor" viewBox="0 0 320 512">
+                                    <path
+                                        d="M27.66 224h264.7c24.6 0 36.89-29.78 19.54-47.12l-132.3-136.8c-5.406-5.406-12.47-8.107-19.53-8.107c-7.055 0-14.09 2.701-19.45 8.107L8.119 176.9C-9.229 194.2 3.055 224 27.66 224zM292.3 288H27.66c-24.6 0-36.89 29.77-19.54 47.12l132.5 136.8C145.9 477.3 152.1 480 160 480c7.053 0 14.12-2.703 19.53-8.109l132.3-136.8C329.2 317.8 316.9 288 292.3 288z" />
+                                </svg></a>
+                        </div>
+                    </th>
+                    <th scope="col" class="px-6 py-3 w-full">
                         <span class="sr-only">Edit</span>
                     </th>
                 </tr>
             </thead>
             <tbody>
 
+                @php
+                    $i = 0;
+                @endphp
                 @foreach ($soutenances as $soutenance)
+                    @php
+                        $i++;
+                    @endphp
                     <tr class="bg-white dark:bg-gray-800">
                         <th scope="row"
                             class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            {{ $soutenance->etudiants->nom }} {{ $soutenance->etudiants->prenom}}
+                            {{ $soutenance->etudiants->nom . ' ' . $soutenance->etudiants->prenom }}
                         </th>
+
                         <td class="px-6 py-4">
-                            {{ $soutenance->presidents->nom  }}
+                            {{ $soutenance->note }}
                         </td>
                         <td class="px-6 py-4">
-                            {{ $soutenance->organismes->lieu }}
+                            {{ $soutenance->presidents->nom . ' ' . $soutenance->presidents->prenoms }}
                         </td>
 
+                        <td class="px-6 py-4">
+                            {{ $soutenance->examinateurs->nom . ' ' . $soutenance->examinateurs->prenoms }}
+                        </td>
+
+                        <td class="px-6 py-4">
+                            {{ $soutenance->rapporteur_ints->nom . ' ' . $soutenance->rapporteur_ints->prenoms }}
+                        </td>
+                        <td class="px-6 py-4">
+                            {{ $soutenance->rapporteur_exts->nom . ' ' . $soutenance->rapporteur_exts->prenoms }}
+                        </td>
                         {{-- <td class="px-6 py-4 text-right">
                             <a href="{{ route('soutenir.edit', $soutenance) }}"
                                 class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
@@ -127,20 +170,30 @@
                         <td class="px-6 py-4 text-right">
 
 
-                            <button data-modal-target="popup-modal" data-modal-toggle="popup-modal"
+                            <a href="{{ route('soutenir.edit', $soutenance) }}"
+                            class=" text-blue-600 hover:text-blue-700 focus:ring-4 focus:outline-none open-modal focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 text-center">
+                            <i class="fa-solid fa-pen-to-square transform transition-all hover:rotate-45"></i>
+                        </a>
+
+                            <button data-modal-target="popup-modal{{$i}}" data-modal-toggle="popup-modal{{$i}}"
                                 class="block text-red-600 hover:text-red-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
                                 type="button">
                                 Supprimer
                             </button>
 
+                            <a href="{{ route('soutenir.pdf', $soutenance) }}"
+                                class=" hover:rotate-45 text-green-600 hover:text-green-700 focus:ring-4 focus:outline-none open-modal focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 text-center">
+                                <i class="fa-solid fa-print "></i>
+                            </a>
 
-                            <div id="popup-modal" tabindex="-1"
+
+                            <div id="popup-modal{{$i}}" tabindex="-1"
                                 class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full">
                                 <div class="relative w-full h-full max-w-md md:h-auto">
                                     <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                                         <button type="button"
                                             class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
-                                            data-modal-hide="popup-modal">
+                                            data-modal-hide="popup-modal{{$i}}">
                                             <svg aria-hidden="true" class="w-5 h-5" fill="currentColor"
                                                 viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                                 <path fill-rule="evenodd"
@@ -157,17 +210,18 @@
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                     d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                             </svg>
-                                            <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Are
-                                                you sure you want to delete this product?</h3>
-                                            {{-- <form action="{{ route('soutenir.destroy', $soutenance) }}" method="POST" --}}
+                                            <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Vous
+                                                êtes sûre d'effacer le soutenance ?</h3>
+                                            <form action="{{ route('soutenir.destroy', $soutenance ) }}"
+                                                method="POST"
                                                 class="text-white font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit"
                                                     class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">Je
-                                                    suis sure</button>
+                                                    suis sure {{ $soutenance }}</button>
                                             </form>
-                                            <button data-modal-hide="popup-modal" type="button"
+                                            <button data-modal-hide="popup-modal{{$i}}" type="button"
                                                 class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">No,
                                                 cancel</button>
                                         </div>
@@ -181,7 +235,7 @@
             </tbody>
         </table>
 
-      {{ $soutenances->links() }}
+        {{ $soutenances->links() }}
 
         <div class="button-action mt-10 flex justify-end">
 

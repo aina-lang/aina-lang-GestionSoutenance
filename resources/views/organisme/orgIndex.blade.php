@@ -1,11 +1,10 @@
 <x-app-layout>
-    <div class="overflow-x-auto  sm:ml-64 mb-10">
+    <div class="px-4 sm:ml-64 mb-10 ">
 
-        <div class="xl:flex justify-between">
+        <div class="xl:flex justify-between outline-none">
             <div class="logo">
-                <h1 class="text-bold text-xl text-indigo-500  mb-9 xl:mb-0 xl:mt-2">Gestion des organismes
+                <h1 class="text-bold text-xl text-gray-900 font-bold  mb-9 xl:mb-0 xl:mt-2">Gestion des organismes</h1>
 
-                </h1>
             </div>
             <form class=" mb-9 xl:w-3/6 xl:float-right" method="GET" action="{{ url('/') }}">
                 @csrf
@@ -64,13 +63,15 @@
             </form>
         </div>
 
-        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400    shadow-xl rounded-lg  max-h-40 mb-5">
+        <table
+            class="min-w-full mx-auto text-sm text-left text-gray-500 dark:text-gray-400    shadow-xl rounded-lg mb-5 hidden xl:block ">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <tr>
                 <tr>
 
                     <th scope="col" class="px-6 py-3">
                         <div class="flex items-center">
-                           id_org
+                            id_org
                             <a href="#"><svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 ml-1"
                                     aria-hidden="true" fill="currentColor" viewBox="0 0 320 512">
                                     <path
@@ -99,8 +100,8 @@
                         </div>
                     </th>
 
-                    <th></th>
-                    <th scope="col" class="px-6 py-3">
+    
+                    <th scope="col" class="px-6 py-3 w-full">
                         <span class="sr-only">Edit</span>
                     </th>
                 </tr>
@@ -116,16 +117,16 @@
                         <td class="px-6 py-4">
                             {{ $organisme->design }}
                         </td>
-                        <td class="px-6 py-4">
+                        <td class="px-6 py-4 ">
                             {{ $organisme->lieu }}
                         </td>
 
-                        <td class="px-6 py-4 text-right">
-                            <a href="{{ route('organisme.edit', $organisme) }}"
-                                class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                        </td>
-                        <td class="px-6 py-4 text-right">
+                        <td class="px-6 py-4 text-right w-full">
 
+                            <a href="{{ route('organisme.edit', $organisme) }}"
+                                class=" text-blue-600 hover:text-blue-700 focus:ring-4 focus:outline-none open-modal focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 text-center">
+                                <i class="fa-solid fa-pen-to-square transform transition-all hover:rotate-45"></i>
+                            </a>
 
                             <button data-modal-target="popup-modal" data-modal-toggle="popup-modal"
                                 class="block text-red-600 hover:text-red-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"

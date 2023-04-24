@@ -5,7 +5,7 @@
         </div>
         <form action="{{ route('professeur.update', $professeur )  }}" method="POST" class="xl:w-3/5  mx-auto p-4  bg-white shadow-md rounded-md">
             @csrf
-            @method('PATCH'))
+            @method('PATCH')
             <div class="grid xl:grid-cols-2 gap-10 justify-center p-4">
                 <div class="w-full">
                     <div class="mb-4">

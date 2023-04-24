@@ -31,34 +31,24 @@ class Soutenir extends Model
         return $this->belongsTo(Organisme::class, 'idorg');
     }
 
-    public function professeur()
-    {
-        return $this->belongsTo(Organisme::class, 'idorg');
-    }
-
     public function presidents()
     {
         return $this->belongsTo(Professeur::class, 'president');
     }
+    public function rapporteur_exts()
+    {
+        return $this->belongsTo(Professeur::class, 'rapporteur_ext');
+    }
 
+    public function rapporteur_ints()
+    {
+        return $this->belongsTo(Professeur::class, 'rapporteur_int');
+    }
     public function examinateurs()
     {
         return $this->belongsTo(Professeur::class, 'examinateur');
     }
 
-    public function rapporteur_ext()
-    {
-        return $this->belongsTo(Professeur::class, 'rapporteur_ext');
-    }
-
-    public function rapporteur_int()
-    {
-        return $this->belongsTo(Professeur::class, 'rapporteur_int');
-    }
-    // public function etudiants()
-    // {
-    //     return $this->belongsTo(Etudiant::class, 'matricule');
-    // }
 
 }
 

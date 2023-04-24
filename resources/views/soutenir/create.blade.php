@@ -10,7 +10,7 @@
                     {!! Form::select('etudiant', $etudiants, null, [
                         'id' => 'etudiant',
                         'class' =>
-                            'block appearance-none w-full border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline',
+                            ' select block appearance-none w-full border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline',
                         'placeholder' => 'Sélectionner un étudiant',
                     ]) !!}
                 </div>
@@ -20,7 +20,7 @@
                     {!! Form::select('organisme', $organismes, null, [
                         'id' => 'idorg',
                         'class' =>
-                            'block appearance-none w-full border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline',
+                            ' select block appearance-none w-full border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline',
                         'placeholder' => 'Sélectionner un organisme',
                     ]) !!}
                 </div>
@@ -30,7 +30,7 @@
                     {!! Form::select('president', $professeurs, null, [
                         'id' => 'president',
                         'class' =>
-                            'block appearance-none w-full border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline',
+                            ' select block appearance-none w-full border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline',
                         'placeholder' => 'President des jurys',
                     ]) !!}
                 </div>
@@ -39,7 +39,7 @@
                     {!! Form::select('examinateur', $professeurs, null, [
                         'id' => 'examinateur',
                         'class' =>
-                            'block appearance-none w-full border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline',
+                            ' select block appearance-none w-full border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline',
                         'placeholder' => 'Un examinateur',
                     ]) !!}
                 </div>
@@ -49,9 +49,9 @@
                     <label for="rapporteur_int" class="block text-gray-700 font-bold mb-2">Professeur rapporteur
                         interne:</label>
                     {!! Form::select('rapporteur_int', $professeurs, null, [
-                        'id' => 'id_prof',
+                        'id' => 'rapporteur_int',
                         'class' =>
-                            'block appearance-none w-full border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline',
+                            'select block appearance-none w-full border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline',
                         'placeholder' => 'Un rapporteur interne',
                     ]) !!}
                 </div>
@@ -61,7 +61,7 @@
                     {!! Form::select('rapporteur_ext', $professeurs, null, [
                         'id' => 'rapporteur_ext',
                         'class' =>
-                            'block appearance-none w-full border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline',
+                            ' select block appearance-none w-full border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline',
                         'placeholder' => 'Un rapporteur externe',
                     ]) !!}
                 </div>
@@ -69,7 +69,7 @@
                 <div class="mb-4">
                     <label for="annee_univ" class="block text-gray-700 font-bold mb-2">Année universitaire:</label>
                     <select name="annee_univ"
-                        class="block appearance-none w-full border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+                        class=" select block appearance-none w-full border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
                         <option value="">Sélectionner une année universitaire</option>
                         @php
                             $currentYear = date('Y');
@@ -87,7 +87,7 @@
                     <label for="note" class="block text-gray-700 font-bold mb-2">Note :</label>
                     <input type="number" name="note" id="note"
                         class="block appearance-none w-full border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
-                        min="0" max="20" step="0.01" required>
+                        min="0" max="20" step="0.5" required>
                 </div>
 
                 <div class="flex  justify-between xl:justify-end space-x-3 ">

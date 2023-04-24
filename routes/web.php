@@ -47,8 +47,10 @@ Route::middleware([
     });
 
     Route::get('/recherche-etudiant', [EtudiantController::class, 'recherche'])->name('etudiant.recherche');
-    Route::get('/etudiant/pdf/{etudiant}', [EtudiantController::class, 'getPdf'])->name('etudiant.pdf');
-
+    Route::get('/soutenir/pdf/{soutenance}', [SoutenirController::class, 'getPdf'])->name('soutenir.pdf');
+    Route::get('/passoutenance', [EtudiantController::class, 'passoutenance'])->name('etudiant.passoutenance');
+    Route::get('/parniveau', [EtudiantController::class, 'parniveau'])->name('etudiant.parNiveau');
+    Route::get('/notes', [SoutenirController::class, 'soutenancesEntreAnnees'])->name('etudiant.note');
     // Route::resource('dashboard', DashboardController::class);
     Route::resource('etudiant', EtudiantController::class);
     Route::resource('professeur', ProfesseurController::class);
